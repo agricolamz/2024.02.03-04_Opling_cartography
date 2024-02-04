@@ -1,0 +1,17 @@
+---
+title: "Построение карт с использованием пакета `lingtypology` на R"
+date: "today"
+author: "Гарик Мороз"
+date-format: "D.MM.YYYY"
+format:
+  html:
+    number-sections: true
+---
+
+## Некоторые наши проекты
+
+У нашешй лаборатории есть [страница с ресурсами](http://lingconlab.ru/).
+
+- [Typological Atlas of the Languages of Daghestan](http://lingconlab.ru/dagatlas/)
+- [Atlas of Rutul dialects](https://lingconlab.github.io/rutul_dialectology/)
+- [Корпус Просодии Русских Диалектов (ПРуД)](https://lingconlab.github.io/PRuD/)

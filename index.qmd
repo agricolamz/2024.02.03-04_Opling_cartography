@@ -6,6 +6,9 @@ date-format: "D.MM.YYYY"
 format:
   html:
     number-sections: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Введение в R и RStudio
@@ -157,11 +160,18 @@ install.packages(c("tidyverse", "readxl", "writexl", "lingtypology"))
 
 ```{r}
 library(lingtypology)
-map.feature(c("Russian", "Guro"))
+map.feature(c("Nanai", "Guro"))
 ```
 
-
 ### Чтение и запись табличных данных
+
+Для того, чтобы прочитать данные из `.csv`, `.tsv` и т. п. нужно использовать функции `read_csv()` и `read_tsv()`, где в ковычках путь к файлу или URL.
+
+```{r}
+library(tidyverse)
+df <- read_csv("morning_greetings.csv")
+```
+
 
 ## Знакомство с `lingtypology`
 

@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,6 +68,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="index_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="index_files/libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="index_files/libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="index_files/libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="index_files/libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="index_files/libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="index_files/libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="index_files/libs/leaflet-binding-2.2.1/leaflet.js"></script>
+<script src="index_files/libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="index_files/libs/leaflet-providers-plugin-2.2.1/leaflet-providers-plugin.js"></script>
 
 
 </head>
@@ -75,14 +120,230 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="некоторые-наши-проекты" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="некоторые-наши-проекты"><span class="header-section-number">1</span> Некоторые наши проекты</h2>
-<p>У нашешй лаборатории есть <a href="http://lingconlab.ru/">страница с ресурсами</a>.</p>
+<section id="введение-в-r-и-rstudio" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="введение-в-r-и-rstudio"><span class="header-section-number">1</span> Введение в R и RStudio</h2>
+<section id="некоторые-наши-проекты" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="некоторые-наши-проекты"><span class="header-section-number">1.1</span> Некоторые наши проекты</h3>
+<p>В нашей лаборатории есть <a href="http://lingconlab.ru/">страница с ресурсами</a>.</p>
 <ul>
 <li><a href="http://lingconlab.ru/dagatlas/">Typological Atlas of the Languages of Daghestan</a></li>
 <li><a href="https://lingconlab.github.io/rutul_dialectology/">Atlas of Rutul dialects</a></li>
 <li><a href="https://lingconlab.github.io/PRuD/">Корпус Просодии Русских Диалектов (ПРуД)</a></li>
 </ul>
+<p>Все приведенные страницы сделаны на <a href="https://quarto.org/"><code>quarto</code></a>/<code>Rmarkdown</code>, а за карты там отвечает пакет <a href="https://ropensci.github.io/lingtypology/"><code>lingtypology</code></a> — надстройка над R-овским пакетом <a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a>.</p>
+</section>
+<section id="скачиваем-и-устанавливаем-r.-или-нет" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="скачиваем-и-устанавливаем-r.-или-нет"><span class="header-section-number">1.2</span> Скачиваем и устанавливаем R. Или нет?</h3>
+<p>Некоторые люди не любят устанавливать лишние программы себе на компьютер, несколько вариантов есть и для них:</p>
+<ul>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio cloud</a> — полная функциональность RStudio с некоторыми ограничениями;</li>
+<li><a href="https://webr.r-wasm.org/latest/">webR REPL</a> — ограниченная версия компилятора R, которая работает в вашем браузере и не требует никаких установок на компьютер</li>
+<li><a href="https://jupyter.org/">Jupyter</a> ноутбуки;</li>
+<li><a href="https://colab.research.google.com">Google Colab</a> (нужно в настройках переключить ядро);</li>
+<li><a href="https://code.visualstudio.com/">VS Code</a> — другое IDE, которое также позволяет работать с R;</li>
+<li>в принципе, в IDE нет нужды, можно работать из терминала, после установки, нужно всего лишь набрать <code>R</code>.</li>
+</ul>
+<p>Если вам понравилось, R можно установить на собственный компьютер:</p>
+<ul>
+<li>R
+<ul>
+<li><a href="https://cran.r-project.org/bin/windows/base/">на Windows</a></li>
+<li><a href="https://cran.r-project.org/bin/macosx/">на Mac</a></li>
+<li><a href="https://cran.rstudio.com/bin/linux/">на Linux</a>, также можно установить из командной строки:</li>
+</ul></li>
+</ul>
+<pre><code>sudo apt-get install r-cran-base</code></pre>
+<ul>
+<li>RStudio — IDE для R (<a href="https://www.rstudio.com/products/rstudio/download/">можно скачать здесь</a>)</li>
+<li>и некоторые пакеты на R</li>
+</ul>
+</section>
+<section id="знакомство-с-rstudio" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="знакомство-с-rstudio"><span class="header-section-number">1.3</span> Знакомство с RStudio</h3>
+<p><code>RStudio</code> — основной IDE для R. После установки R и RStudio можно открыть RStudio и перед вами предстанет что-то похожее на изображение ниже:</p>
+<p><img src="images/01_01_rstudio_initial_view.png" class="img-fluid" alt="RStudio при первом открытии"> После нажатия на двойное окошко чуть левее надписи <em>Environment</em> откроется окно скрипта.</p>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/01_02_rstudio_initial_view.png" class="img-fluid figure-img"></p>
+<figcaption>Подокна RStudio</figcaption>
+</figure>
+</div>
+<p>Все следующие команды можно</p>
+<ul>
+<li>вводить в окне консоли, и тогда для исполнения следует нажимать клавишу <code>Enter</code>.</li>
+<li>вводить в окне скрипта, и тогда для исполнения следует нажимать клавиши <code>Ctrl/Cmd + Enter</code> или на команду Run на панели окна скрипта. Все, что введено в окне скрипта можно редактировать как в любом текстовом редакторе, в том числе сохранять <code>Ctrl/Cmd + S</code>.</li>
+</ul>
+</section>
+<section id="r-как-калькулятор" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="r-как-калькулятор"><span class="header-section-number">1.4</span> R как калькулятор</h3>
+<p>Давайте начнем с самого простого и попробуем использовать R как простой калькулятор. <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code> (степень), <code>()</code> и т. д.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">40</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">*</span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span><span class="sc">/</span><span class="dv">9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">+</span><span class="dv">4</span>)<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>Обратите внимание на то, что разделителем целой и дробной частей является точка, кроме того, если целая часть состоит исключительно из 0, то ее можно опустить.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fl">50.3</span> <span class="sc">+</span> .<span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 51</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="разные-типы-объектов-в-r" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="разные-типы-объектов-в-r"><span class="header-section-number">2</span> Разные типы объектов в R</h2>
+<p>Данные в R обычно причисляют к одному из типов. Сегодня нас будут волновать</p>
+<ul>
+<li>числа</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fl">57.57</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 57.57</code></pre>
+</div>
+</div>
+<ul>
+<li>строки</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Жила-была на свете крыса"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Жила-была на свете крыса"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="st">'В морском порту Вальпараисо,'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "В морском порту Вальпараисо,"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="st">'На складе мяса и маиса,'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "На складе мяса и маиса,"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Какао и вина."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Какао и вина."</code></pre>
+</div>
+</div>
+<ul>
+<li>логические</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<ul>
+<li>пропущенные значения</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>Объединения значений одного типа в R называют вектор и соединяют их при помощи функции <code>c()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"лъа"</span>, <span class="st">"хъу"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "лъа" "хъу"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 3 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>В любом векторе могут быть пропущенные значения:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"лъа"</span>, <span class="st">"хъу"</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "лъа" "хъу" NA   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5 NA  3  2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]    NA  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>Табличные данные в R представляют собой наборы векторов и называется датафрейм:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Соня"</span>, <span class="st">"Лена"</span>),</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">hair_length =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">15</span>),</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">work_in_academia =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">residence =</span> <span class="fu">c</span>(<span class="st">"СПб"</span>, <span class="st">"Москва"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  name hair_length work_in_academia residence
+1 Соня          50             TRUE       СПб
+2 Лена          15            FALSE    Москва</code></pre>
+</div>
+</div>
+<section id="работа-с-пакетами" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="работа-с-пакетами"><span class="header-section-number">2.1</span> Работа с пакетами</h3>
+<p>Все богатство R находиться в его огромной инфраструктуре пакетов, которые может разрабатывать кто угодно. Для сегодняшнего занятия нам понадобиться всего три: <code>tidyverse</code>, <code>readxl</code>, <code>writexl</code> <code>lingtypology</code>. Чтобы их установить нужно использовать команду</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"readxl"</span>, <span class="st">"writexl"</span>, <span class="st">"lingtypology"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Помните, что если вы установили пакет, это не значит, что фукнции пакета вам доступны. Пакет еще нужно включить</p>
+<p><img src="images/02_install.png" class="img-fluid"></p>
+<p>Проверим, что все установилось.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lingtypology)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Based on the Glottolog v. 4.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map.feature</span>(<span class="fu">c</span>(<span class="st">"Russian"</span>, <span class="st">"Guro"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-244aaddf2639520a3f5a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-244aaddf2639520a3f5a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"zoomControl":false},"calls":[{"method":"addTiles","args":["OpenStreetMap.Mapnik",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap.Mapnik",null,"OpenStreetMap.Mapnik",{"errorTileUrl":"","noWrap":false,"opacity":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[59,7.34954],[50,-6.31154],5,null,["",""],{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":["#3B8BC6","#3B8BC6"],"fillOpacity":1},null,null,["<a href='https://glottolog.org/resource/languoid/id/russ1263' target='_blank'>Russian<\/a><br>","<a href='https://glottolog.org/resource/languoid/id/guro1248' target='_blank'>Guro<\/a><br>"],null,null,{"interactive":false,"permanent":false,"direction":"right","opacity":1,"offset":[7.5,0],"textsize":"10px","textOnly":true,"style":{"font-size":"15px","font-family":"sans-serif"},"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]}],"limits":{"lat":[7.34954,59],"lng":[-6.31154,50]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="чтение-и-запись-табличных-данных" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="чтение-и-запись-табличных-данных"><span class="header-section-number">2.2</span> Чтение и запись табличных данных</h3>
+</section>
+</section>
+<section id="знакомство-с-lingtypology" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="знакомство-с-lingtypology"><span class="header-section-number">3</span> Знакомство с <code>lingtypology</code></h2>
 </section>
 
 </main>

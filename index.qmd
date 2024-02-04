@@ -45,6 +45,10 @@ sudo apt-get install r-cran-base
 - RStudio --- IDE для R ([можно скачать здесь](https://www.rstudio.com/products/rstudio/download/))
 - и некоторые пакеты на R
 
+R, RStudio... как-то все путано... Картинка Стефано Каретты:
+
+![](images/03_r_vs_rstudio.png)
+
 ### Знакомство с RStudio
 
 `RStudio` --- основной IDE для R. После установки R и RStudio можно открыть RStudio и перед вами предстанет что-то похожее на изображение ниже:
